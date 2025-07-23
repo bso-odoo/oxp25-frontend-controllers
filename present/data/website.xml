@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Contains website-integration specifics -->
+<odoo>
+
+    <record id="menu_presentation" model="website.menu">
+        <field name="name">Presentation</field>
+        <field name="url">/present</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">25</field>
+    </record>
+
+</odoo>

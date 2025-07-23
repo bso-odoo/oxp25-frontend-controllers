@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- With website layout -->
+
+    <template id="present.website_layout" name="Website layout">
+        <t t-call="website.layout">
+            <div id="wrap" class="presentation">
+                <section class="pt40 pb40">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <t t-out="0"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="present.website_presentation_list" name="Presentation list (for website)">
+        <t t-call="present.website_layout">
+            <div class="oe_structure oe_empty" id="oe_structure_presentation_all_top"/>
+            <t t-call="present.presentation_list"/>
+            <div class="oe_structure oe_empty" id="oe_structure_presentation_all_bottom"/>
+        </t>
+    </template>
+
+    <template id="present.website_presentation" name="Presentation (for website)">
+        <t t-call="present.website_layout">
+            <div class="oe_structure oe_empty" id="oe_structure_presentation_single_top"/>
+            <t t-call="present.presentation"/>
+            <div class="oe_structure oe_empty" id="oe_structure_presentation_single_bottom"/>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- With free layout -->
+
+    <template id="present.free_layout" name="Free layout">
+        <html>
+            <head>
+                <link type="text/css" rel="stylesheet" href="/web/static/lib/bootstrap/dist/css/bootstrap.css"/>
+                <style>
+.presentation {
+    padding: 50px;
+
+    .type_bullet {
+        display: list-item;
+    }
+
+    .type_heading {
+        font-size: xx-large;
+    }
+
+    .type_code {
+        font-family: monospace;
+        color: white;
+        background-color: black;
+        padding: 5px;
+        white-space: pre;
+    }
+}
+                </style>
+            </head>
+            <body class="presentation">
+                <t t-out="0"/>
+            </body>
+        </html>
+    </template>
+
+    <template id="present.plain_presentation_list" name="Presentation list (plain)">
+        <t t-call="present.free_layout">
+            <t t-call="present.presentation_list"/>
+        </t>
+    </template>
+
+    <template id="present.plain_presentation" name="Presentation (plain)">
+        <t t-call="present.free_layout">
+            <t t-call="present.presentation"/>
+        </t>
+    </template>
+
+</odoo>

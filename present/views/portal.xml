@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Portal /my -->
+
+    <template id="portal_my_home_present" name="Presentation /my elements" customize_show="True" inherit_id="portal.portal_my_home" priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+            <t t-set="portal_alert_category_enable" t-value="True"/>
+        </xpath>
+        <div id="portal_alert_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="bg_color" t-value="'alert alert-primary align-items-center'"/>
+                <t t-set="placeholder_count" t-value="'presentation_alert_count'"/>
+                <t t-set="title">Remaining to-dos in presentations</t>
+                <t t-set="url" t-value="'/my/presentations'"/>
+                <t t-set="show_count" t-value="True"/>
+            </t>
+        </div>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/present/static/img/presentation-learning-icon.svg'"/>
+                <t t-set="title">Your Presentations</t>
+                <t t-set="url" t-value="'/my/presentations'"/>
+                <t t-set="text">Follow, view or pay your presentation</t>
+                <t t-set="placeholder_count" t-value="'presentation_count'"/>
+            </t>
+        </div>
+    </template>
+
+    <template id="present.portal_layout" name="Portal layout">
+        <t t-call="portal.portal_layout">
+            <div id="wrap" class="presentation">
+                <section class="pt40 pb40">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <t t-out="0"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="present.portal_presentation_list" name="Presentation list (for portal)">
+        <t t-set="is_presentations_page">1</t>
+        <t t-set="additional_title">My presentations</t>
+        <t t-call="present.portal_layout">
+            <t t-call="present.presentation_list"/>
+        </t>
+    </template>
+
+    <template id="present.portal_presentation" name="Presentation (for portal)">
+        <t t-set="additional_title">My presentation</t>
+        <t t-call="present.portal_layout">
+            <t t-call="present.presentation"/>
+        </t>
+    </template>
+
+    <template id="portal_breadcrumb_present" name="Portal layout : present breadcrumbs" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li id="portal_breadcrumbs_present" t-if="is_presentations_page or presentation" t-attf-class="breadcrumb-item #{'active ' if not presentation else ''}">
+                <a t-if="presentation" t-attf-href="/my/presentations?{{ keep_query() }}">Presentations</a>
+                <t t-else="">Presentations</t>
+            </li>
+            <li t-if="presentation" class="breadcrumb-item active">
+                <t t-out="presentation.name"/>
+            </li>
+        </xpath>
+    </template>
+
+</odoo>

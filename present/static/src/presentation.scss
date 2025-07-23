@@ -1,0 +1,17 @@
+.presentation {
+    .type_bullet {
+        display: list-item;
+    }
+
+    .type_heading {
+        font-size: xx-large;
+    }
+
+    .type_code {
+        font-family: monospace;
+        color: white;
+        background-color: black;
+        padding: 5px;
+        white-space: pre;
+    }
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Plain templates -->
+
+    <template id="present.presentation_list" name="Presentations">
+        <t t-if="presentations">
+            <h1>Presentations</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 pb-3" t-foreach="presentations" t-as="presentation" t-att-data-presentation="presentation.id">
+                        <div class="card pb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a
+                                        t-field="presentation.name"
+                                        t-att-href="get_url(presentation)"
+                                    />
+                                </h5>
+                            </div>
+                            <p class="card-text px-3"
+                                t-field="presentation.description"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <div class="alert alert-info">
+                There are no presentations.
+            </div>
+        </t>
+    </template>
+
+    <template id="present.presentation" name="Presentation">
+        <t t-if="presentation">
+            <h1 class="pb40" t-out="presentation.name"/>
+            <t t-set="page" t-value="presentation.page_ids[page_index] if page_index &lt; len(presentation.page_ids) and page_index >= 0 else None"/>
+            <t t-call="present.page"/>
+        </t>
+        <t t-else="">
+            <div class="alert alert-info">
+                There is no presentation. <a t-att-href="list_url">Return to list.</a>
+            </div>
+        </t>
+    </template>
+
+    <template id="present.page" name="Presentation">
+        <t t-if="page">
+            <h2 t-out="page.title"/>
+            <div t-foreach="page.content_ids" t-as="content" class="my-4">
+                <a t-if="content.type == 'link'" t-out="content.text" t-att-href="content.text" target="_blank"/>
+                <div t-else="" t-out="content.text"
+                    t-attf-class="type_{{content.type}}"
+                />
+            </div>
+            <div>
+                <a t-if="page_index &gt; 0"
+                    class="btn btn-secondary"
+                    t-attf-href="{{get_url(presentation)}}/{{page_index - 1}}"
+                >Previous Page</a>
+                <a t-if="page_index &lt; len(presentation.page_ids) - 1"
+                    class="btn btn-primary"
+                    t-attf-href="{{get_url(presentation)}}/{{page_index + 1}}"
+                >Next Page</a>
+            </div>
+        </t>
+        <t t-else="">
+            <div class="alert alert-info">
+                There is no page. <a t-att-href="list_url">Return to list.</a>
+            </div>
+        </t>
+    </template>
+
+</odoo>

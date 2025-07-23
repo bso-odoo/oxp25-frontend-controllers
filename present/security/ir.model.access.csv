@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+presentation_public,presentation,model_presentation,base.group_public,1,0,0,0
+presentation_portal,presentation,model_presentation,base.group_portal,1,0,0,0
+presentation_employee,presentation,model_presentation,base.group_user,1,1,1,1
+page_public,presentation.page,model_presentation_page,base.group_public,1,0,0,0
+page_portal,presentation.page,model_presentation_page,base.group_portal,1,0,0,0
+page_employee,presentation.page,model_presentation_page,base.group_user,1,1,1,1
+content_public,presentation.content,model_presentation_content,base.group_public,1,0,0,0
+content_portal,presentation.content,model_presentation_content,base.group_portal,1,0,0,0
+content_employee,presentation.content,model_presentation_content,base.group_user,1,1,1,1

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="controllers" model="presentation">
+        <field name="name">1. How to use front-end controllers</field>
+        <field name="description">Beginner's tutorial about controllers</field>
+        <field name="website_published">True</field>
+    </record>
+
+    <record id="controllers_controllers" model="presentation.page">
+        <field name="presentation_id" ref="controllers"/>
+        <field name="title">What are front-end controllers</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_controllers"/>
+        <field name="text">Class inside the controllers folder</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_controllers"/>
+        <field name="text">from odoo import http
+
+class MyApp(http.Controller)</field>
+        <field name="type">code</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_controllers"/>
+        <field name="text">A single addon can have several controllers</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="controllers_routes" model="presentation.page">
+        <field name="presentation_id" ref="controllers"/>
+        <field name="title">Routes</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_routes"/>
+        <field name="text">Describe URLs to match</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_routes"/>
+        <field name="text">Feeds types parameters to method</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_routes"/>
+        <field name="text">&lt;type:name>
+&lt;model("res.user"):user></field>
+        <field name="type">code</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_routes"/>
+        <field name="text">Use slugs to reference model records</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="controllers_types" model="presentation.page">
+        <field name="presentation_id" ref="controllers"/>
+        <field name="title">Types</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_types"/>
+        <field name="text">http</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_types"/>
+        <field name="text">For text/html response</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_types"/>
+        <field name="text">jsonrpc</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_types"/>
+        <field name="text">For application/json response</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="controllers_authorizations" model="presentation.page">
+        <field name="presentation_id" ref="controllers"/>
+        <field name="title">Authorizations</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_authorizations"/>
+        <field name="text">user</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_authorizations"/>
+        <field name="text">Requires user to be authenticated</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_authorizations"/>
+        <field name="text">public</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_authorizations"/>
+        <field name="text">Uses base.public_user</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="controllers_inside" model="presentation.page">
+        <field name="presentation_id" ref="controllers"/>
+        <field name="title">Inside</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_inside"/>
+        <field name="text">access the ORM</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_inside"/>
+        <field name="text">render a template</field>
+        <field name="type">bullet</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="controllers_inside"/>
+        <field name="text">or return a dictionary for JSON</field>
+        <field name="type">bullet</field>
+    </record>
+
+
+    <record id="rendering" model="presentation">
+        <field name="name">2. Using QWeb templates for Rendering</field>
+        <field name="description">The standard way to render HTML content</field>
+        <field name="website_published">True</field>
+    </record>
+
+    <record id="rendering_conditions" model="presentation.page">
+        <field name="presentation_id" ref="rendering"/>
+        <field name="title">Conditions</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="rendering_conditions"/>
+        <field name="text">t-if
+t-else</field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="rendering_loops" model="presentation.page">
+        <field name="presentation_id" ref="rendering"/>
+        <field name="title">Loops</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="rendering_loops"/>
+        <field name="text">t-foreach
+t-as</field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="rendering_data" model="presentation.page">
+        <field name="presentation_id" ref="rendering"/>
+        <field name="title">Data</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="rendering_data"/>
+        <field name="text">t-att-*
+t-attf-*
+t-out
+t-field
+t-set</field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="rendering_sub" model="presentation.page">
+        <field name="presentation_id" ref="rendering"/>
+        <field name="title">Sub-templates</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="rendering_sub"/>
+        <field name="text">t-call</field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="website" model="presentation">
+        <field name="name">3. Fitting inside Website pages</field>
+        <field name="description">Make your addon integrate within website</field>
+        <field name="website_published">True</field>
+    </record>
+
+    <record id="website_layout_demo" model="presentation.page">
+        <field name="presentation_id" ref="website"/>
+        <field name="title">Layout</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="website_layout_demo"/>
+        <field name="text">&lt;t t-call="website.layout"></field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="website_menu" model="presentation.page">
+        <field name="presentation_id" ref="website"/>
+        <field name="title">Menu</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="website_menu"/>
+        <field name="text">Have a menu entry:</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="website_menu"/>
+        <field name="text">&lt;record model="website.menu" ...></field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="website_pager" model="presentation.page">
+        <field name="presentation_id" ref="website"/>
+        <field name="title">Pager</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="website_pager"/>
+        <field name="text">TODO</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="website_search" model="presentation.page">
+        <field name="presentation_id" ref="website"/>
+        <field name="title">Search</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="website_search"/>
+        <field name="text">TODO</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record id="portal" model="presentation">
+        <field name="name">4. Fitting inside Portal pages</field>
+        <field name="description">Integrate within portal /my</field>
+        <field name="website_published">True</field>
+    </record>
+
+    <record id="portal_layout_demo" model="presentation.page">
+        <field name="presentation_id" ref="portal"/>
+        <field name="title">Layout</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_layout_demo"/>
+        <field name="text">&lt;t t-call="portal.layout"></field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="portal_links" model="presentation.page">
+        <field name="presentation_id" ref="portal"/>
+        <field name="title">Links</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_links"/>
+        <field name="text">&lt;template inherit_id="portal.portal_my_home"></field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="portal_controller" model="presentation.page">
+        <field name="presentation_id" ref="portal"/>
+        <field name="title">Controller</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_controller"/>
+        <field name="text">from odoo.addons.portal.controllers import portal
+
+
+class CustomerPortal(portal.CustomerPortal):
+
+    def _prepare_home_portal_values(self, counters):
+        ...</field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="portal_breadcrumbs_demo" model="presentation.page">
+        <field name="presentation_id" ref="portal"/>
+        <field name="title">Breadcrumbs</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_breadcrumbs_demo"/>
+        <field name="text">&lt;template inherit_id="portal.portal_breadcrumbs"></field>
+        <field name="type">code</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_breadcrumbs_demo"/>
+        <field name="text">Single item:</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="portal_breadcrumbs_demo"/>
+        <field name="text">&lt;li class="breadcrumb-item active"></field>
+        <field name="type">code</field>
+    </record>
+
+    <record id="references" model="presentation">
+        <field name="name">5. References</field>
+        <field name="description">Further reading</field>
+        <field name="website_published">True</field>
+    </record>
+
+    <record id="references_list" model="presentation.page">
+        <field name="presentation_id" ref="references"/>
+        <field name="title">Links</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">Controllers documentation</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">https://www.odoo.com/documentation/master/developer/reference/backend/http.html</field>
+        <field name="type">link</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">For client-side dynamic content</field>
+        <field name="type">heading</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">Owl documentation</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">https://www.odoo.com/documentation/master/developer/reference/frontend/owl_components.html</field>
+        <field name="type">link</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">Owl tutorials</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">https://www.odoo.com/documentation/master/developer/tutorials/discover_js_framework.html</field>
+        <field name="type">link</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">Interactions</field>
+        <field name="type">plain</field>
+    </record>
+
+    <record model="presentation.content">
+        <field name="page_id" ref="references_list"/>
+        <field name="text">https://github.com/odoo/odoo/blob/master/addons/web/static/src/public/interaction.js</field>
+        <field name="type">link</field>
+    </record>
+
+</odoo>
