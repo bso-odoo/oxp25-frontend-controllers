@@ -23,6 +23,9 @@
         'web.assets_frontend': [
             'present/static/src/**/*',
         ],
+        'website.website_builder_assets': [
+            'present/static/src/website_builder/**/*',
+        ],
     },
     'author': 'Odoo S.A.',
     'license': 'LGPL-3',
