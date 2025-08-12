@@ -1,18 +1,32 @@
-from odoo import http
+from odoo import http, tools
 from odoo.http import request
 
 class Presentation(http.Controller):
+    _presentation_per_page = 3
 
     @http.route([
         '/present',
+        '/present/page/<int:page>',
     ], type='http', auth='public', website=True)
-    def present(self):
+    def present(self, page=1):
         # Use ORM
-        presentations = request.env['presentation'].search([])
+        presentations = request.env['presentation'].search([], offset=(page - 1) * self._presentation_per_page, limit=self._presentation_per_page)
+        total = request.env['presentation'].search_count([])
+        url_args = dict() # Fill with whichever parameter needs to be kept across pages
+        # Prepare pager
+        pager = tools.lazy(lambda: request.website.pager(
+            url=request.httprequest.path.partition('/page/')[0],
+            total=total,
+            page=page,
+            step=self._presentation_per_page,
+            url_args=url_args,
+        ))
+
         # Render with QWeb
         values = {
             'presentations': presentations,
             'get_url': lambda presentation: presentation.website_url,
+            'pager': pager,
         }
         return request.render('present.website_presentation_list', values)
 
