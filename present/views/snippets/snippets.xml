@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="dynamic_filter_template_presentation_list" name="List">
+    <div t-foreach="records" t-as="data" class="s_presentations border-0 rounded-3 p-3" data-extra-classes="g-3" data-column-classes="col-12 col-sm-6 col-lg-4">
+        <t t-set="record" t-value="data['_record']"/>
+        <a class="text-decoration-none text-reset" t-att-title="'Read ' + data['name']" t-att-href="data['call_to_action_url']">
+            <h4 class="mt-2">
+                <span t-if="is_sample" class="bg-primary text-uppercase">Sample</span>
+                <span t-field="record.name"/>
+            </h4>
+            <span t-field="record.description"/>
+        </a>
+    </div>
+</template>
+
+</odoo>

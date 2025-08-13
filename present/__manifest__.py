@@ -11,6 +11,7 @@
         'views/plain.xml',
         'views/website.xml',
         'views/portal.xml',
+        'views/snippets/snippets.xml',
         'security/ir.model.access.csv',
     ],
     'demo': [
