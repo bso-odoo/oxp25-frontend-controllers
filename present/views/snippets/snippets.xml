@@ -6,7 +6,7 @@
         <t t-set="record" t-value="data['_record']"/>
         <a class="text-decoration-none text-reset" t-att-title="'Read ' + data['name']" t-att-href="data['call_to_action_url']">
             <h4 class="mt-2">
-                <span t-if="is_sample" class="bg-primary text-uppercase">Sample</span>
+                <span t-if="is_sample" class="bg-primary text-uppercase badge rounded-pill">Sample</span>
                 <span t-field="record.name"/>
             </h4>
             <span t-field="record.description"/>
