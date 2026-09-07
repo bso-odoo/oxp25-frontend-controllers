@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>No Odoo Editor in here</title>
+    </head>
+    <body>
+        <style>
+            body {
+                background-image: linear-gradient(white 45%, black 50%);
+                font-size: 40px;
+            }
+            div {
+                font-size: 50px;
+                text-align: center;
+                margin: 50px;
+                padding: 50px;
+            }
+            button {
+                font-size: 50px;
+            }
+            pre {
+                background-color: black;
+                color: green;
+                padding: 50px;
+            }
+            img {
+                background-color: red;
+                box-sizing: x;
+                margin: 40%;
+                margin-top: 100%;
+            }
+        </style>
+        <fieldset>
+            <legend>No Odoo Editor in here</legend>
+            <div contenteditable="true">
+                Here is a <button>Button</button> within editable text
+            </div>
+        </fieldset>
+        <pre></pre>
+        <img src="https://static.wikia.nocookie.net/windows/images/c/c1/Win31logo.png"/>
+        <script>
+            const pre = document.querySelector("pre");
+            pre.textContent =
+                document.querySelector("div").outerHTML.replaceAll(/\n\s{12}/g, "\n");
+            function scroll() {
+                document.querySelector("img").scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            pre.addEventListener("click", scroll);
+        </script>
+    </body>
+</html>
