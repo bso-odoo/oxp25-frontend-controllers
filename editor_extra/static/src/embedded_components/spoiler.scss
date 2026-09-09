@@ -1,0 +1,9 @@
+.o_spoiler {
+  filter: blur(0.25rem);
+  &:has(.o_spoiler_clicked) {
+    filter: none;
+    background-color: aliceblue;
+    transition-property: filter;
+    transition-duration: 1000ms;
+  }
+}

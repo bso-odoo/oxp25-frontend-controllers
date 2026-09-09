@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="editor_extra.EmbeddedSpoiler">
+        <span class="position-relative placeholder-glow mx-auto transition-base o_ready"
+            contenteditable="true"
+            t-on-input="this.onInput"
+            t-on-click="this.onClick"
+            t-att-class="{ o_spoiler_clicked: this.state.clicked }"
+        >
+            <t t-out="this.props.text"/>
+        </span>
+    </t>
+</templates>

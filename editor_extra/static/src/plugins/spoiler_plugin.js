@@ -1,10 +1,10 @@
 import { Plugin } from "@html_editor/plugin";
-import { closestElement, selectElements } from "@html_editor/utils/dom_traversal";
 import { _t } from "@web/core/l10n/translation";
+import { renderToElement } from "@web/core/utils/render";
 
 export class SpoilerPlugin extends Plugin {
     static id = "spoiler";
-    static dependencies = ["dom", "feff", "input", "selection"];
+    static dependencies = ["dom", "history", "selection"];
     /** @type {import("plugins").EditorResources} */
     resources = {
         user_commands: [{
@@ -12,7 +12,8 @@ export class SpoilerPlugin extends Plugin {
             description: _t("Spoiler"),
             icon: "help",
             run: () => {
-                alert("Called");
+                const selection = this.dependencies.selection.getEditableSelection();
+                this.insertSpoilerElement({ text: selection.toString() || "Spoiler" });
             },
             isAvailable: (selection) => {
                 return true;
@@ -49,5 +50,17 @@ export class SpoilerPlugin extends Plugin {
             keywords: [_t("hide"), _t("hidden")],
         }],
     };
+
+    insertSpoilerElement(embeddedProps) {
+        const embedEl = renderToElement("editor_extra.SpoilerBlueprint", {
+            embeddedProps: JSON.stringify(embeddedProps),
+        });
+        this.dependencies.dom.insert(embedEl);
+        this.dependencies.history.commit();
+        this.dependencies.selection.setSelection({
+            anchorNode: embedEl,
+            anchorOffset: 1,
+        });
+    }
 }
 
