@@ -16,6 +16,12 @@
         'html_editor.assets_editor': [
             'editor_extra/static/src/plugins/**/*',
             'editor_extra/static/src/plugin_sets.js',
+            'editor_extra/static/src/embedded_components/**/*',
+            'editor_extra/static/src/embedding_sets.js',
+        ],
+        'web.assets_frontend': [
+            'editor_extra/static/src/embedded_components/**/*',
+            'editor_extra/static/src/embedding_sets.js',
         ],
     },
     'author': 'Odoo S.A.',
