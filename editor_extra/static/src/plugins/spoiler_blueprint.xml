@@ -1,0 +1,8 @@
+<templates id="template" xml:space="preserve">
+
+    <t t-name="editor_extra.SpoilerBlueprint">
+        <span t-att-data-embedded-props="embeddedProps" data-embedded="spoiler"
+            data-oe-protected="true" contenteditable="false" class="o_spoiler o-contenteditable-false"/>
+    </t>
+
+</templates>
